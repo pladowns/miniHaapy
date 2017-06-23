@@ -1,0 +1,37 @@
+{
+  "short_name": "Pladowns",
+  "name": "Pladowns App Test",
+  "icons": [
+    {
+      "src": "assets/launcher/96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/launcher/144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/launcher/192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/launcher/300.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/launcher/300.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "black",
+  "background_color": "black",
+  "prefer_related_applications": false
+}

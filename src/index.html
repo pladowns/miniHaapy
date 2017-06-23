@@ -2,13 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MiniHappy</title>
+  <title>MiniHappy PWA Online hackathon</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="assets/launcher/192.png">
+  <meta name="msapplication-TileImage" content="assets/launcher/144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="assets/manifest.json">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+
 </head>
 <body>
   <app-root></app-root>
 </body>
 </html>
+<script>
+
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  console.log('Service Worker and Push is supported');
+
+  navigator.serviceWorker.register('sw.js')
+  .then(function(swReg) {
+    console.log('Service Worker is registered');
+
+    swRegistration = swReg;
+  })
+  .catch(function(error) {
+    console.error('Service Worker Error');
+  });
+} else {
+  console.warn('Push messaging is not supported');
+  pushButton.textContent = 'Push Not Supported';
+}
+
+</script>

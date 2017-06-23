@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+/*
+    -- Reset CSS
+    --  Global CSS
+*/
+
+body {
+    font-size: 16px;
+    padding:0;
+    margin:0;
+}
+
+h1{ font-size: 1.8em;}
+h2{ font-size: 1.6em;}
+h3{ font-size: 1.5em;}
+h4{ font-size: 1.4em;}
+h5{ font-size: 1.3em;}
+h6{ font-size: 1.15em;}
+
+* {
+    /* Use boder inside html element */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input {
+    /* disable style default */
+    -webkit-appearance: none; /* iOS Safari */
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    /* disable style default outline */
+    outline: none;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: #FF4444;
+}
+
+.noselect {
+    /* disable text selection */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
