@@ -1,6 +1,6 @@
 /node_modules
 /build
-/functions
+/functions/node_modules
 src/app/app.config.ts
 .firebaserc
 firebase.json

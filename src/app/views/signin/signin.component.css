@@ -1,0 +1,147 @@
+.signin, .signinlayer{
+    display: block;
+    width: 100%;
+    height:100%;
+}
+
+.signin{
+    background-image: url("/assets/images/Css-Page-Background-Color.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.signinlayer{
+    background-image: url("/assets/images/bg.png");
+    background-size: 650px auto;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+.logo{
+    display: block;
+    width: 50%;
+    height: calc(100% - 30px);
+    float: left;
+}
+
+.logo > img{
+    width: 50%;  
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title{
+    display: flex;
+    width: 50%;
+    height:calc(50% - 15px);
+    padding: 10px;
+    float: left;
+}
+
+.vendor{
+    display: block;
+    width: 50%;
+    height:calc(50% - 15px);
+    float: left;
+    padding: 10px;
+}
+
+.copyright{
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-align: right;
+    padding-right: 20px;
+    color:#999999;
+    float: left;
+}
+
+.title > ul{
+    display: block;
+    list-style-type:decimal;
+    font-size: 1.5em;
+    font-weight: 600;
+    color:#CCCCCC;
+    align-self: flex-end;
+    margin: 0;
+}
+
+.title > ul >li{
+    font-size: 0.7em;
+    font-weight: 200;
+    margin-left: 20px;
+}
+
+.vendor > ul{
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+}
+
+.vendor > ul > li{
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    line-height: 50px;
+    border-radius: 50%;
+    box-shadow: 0.75px 1.5px 1px 1.5px #222222;
+    overflow: hidden;
+    float: left;
+}
+
+.vendor > ul > li > img{
+    width: 60px;
+    height: 60px;
+    margin-top:-5px;
+    margin-left:-5px;
+    cursor: pointer;
+}
+
+.vendor > ul > li:hover{
+    border:2px solid #FFFFFF;
+}
+
+/* Mobile size screen ================== */
+@media screen and (max-width:600px) {
+    .logo, .title, .vendor, .copyright{
+        width:100%;
+    }
+
+    .logo{
+        height: calc(45% - 10px);
+    }
+
+    .logo > img{
+        width: 30%;  
+    }
+
+    .title{
+        height: calc(30% - 10px);
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .vendor{
+        height: calc(25% - 10px);
+        padding-left: 30px;
+        padding-right: 30px;        
+    }
+
+    .title > ul{
+        font-size: 1.5em;
+    }
+}
+
+/* Mobile size screen ================== */
+@media screen and (max-width:400px) {
+    .logo > img{
+        width: 40%;  
+    }
+}
