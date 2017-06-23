@@ -1,0 +1,7 @@
+/node_modules
+/build
+/functions
+src/app/app.config.ts
+.firebaserc
+firebase.json
+workbox-cli-config.js
