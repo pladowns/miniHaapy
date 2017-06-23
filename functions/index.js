@@ -18,12 +18,33 @@ exports.sendTopicNotification = functions.database.ref("/ntb")
   .onWrite(event => {
     var data = event.data.val();     
 
-
-    for(var key in data){
-        //  delete notification  topic in topic box
-        admin.database().ref("/ntb/" + key).remove();
-        admin.database().ref("/ntbtemp/" + key).set(data[key]);
-    }
-     
+    //  Fetch messaging token from account by subscrible=enable
+    FetchSubscrible(function(account){
+        for(var key in data){
+            //  delete notification  topic in topic box
+            admin.database().ref("/ntb/" + key).remove();
+            TempData("/ntbtemp/" + key, account);
+        }
+    });
 
 }); 
+
+
+//  test function
+function TempData(reference , data){
+    for(var key in data){
+        // write data temp
+        admin.database().ref(reference).set(data[key].messaging_token);
+    }
+}
+
+
+//  Private function
+//  Read notification subacrible is enable
+function FetchSubscrible(success){
+  var ref = admin.database().ref("/account");
+  ref.orderByChild("subscrible").equalTo("enable").once("value", function(data) {
+    success(data.val());
+  });
+}
+
