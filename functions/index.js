@@ -21,9 +21,26 @@ exports.sendTopicNotification = functions.database.ref("/ntb")
     //  Fetch messaging token from account by subscrible=enable
     FetchSubscrible(function(account){
         for(var key in data){
-            //  delete notification  topic in topic box
+            //  delete notification  topic in topic box before read data to memory
             admin.database().ref("/ntb/" + key).remove();
-            TempData("/ntbtemp/" + key, account);
+
+            //  Setup payload from messaging (notification)
+            var value = data[key];
+            var payload = {
+                "notification" :{
+                    "title": value.title,
+                    "body": value.body,
+                    "icon": value.icon,
+                    "click_action": value.url
+                }
+            };
+
+            //  Loop send messaging to device
+            for(var accountKey in account){
+                var registrationToken = account[accountKey].messaging_token;
+                SendMessaging(payload, registrationToken, "/ntbtest/" + key + "/" + accountKey);
+            }
+            
         }
     });
 
@@ -48,3 +65,13 @@ function FetchSubscrible(success){
   });
 }
 
+//  Send message to device function 
+function SendMessaging(payload, registrationToken, messagingKey){
+  admin.messaging().sendToDevice(registrationToken, payload)
+    .then(function(response) {
+      admin.database().ref(messagingKey).set("true");     
+    })
+    .catch(function(error) {
+      admin.database().ref(messagingKey).set("false");              
+    });
+}
