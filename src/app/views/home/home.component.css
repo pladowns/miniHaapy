@@ -2,7 +2,7 @@
 .side{
     display: block;
     width:250px;
-    height:100vh;
+    height:100%;
     border-right: 1px dotted #666666;
     float:left;
 }
@@ -50,24 +50,106 @@
 .userprofile{
     display: block;
     width: 100%;
-    height:140px;
+    height:110px;
+    box-shadow: 0.3px 0 0.5px 1px #a0a0a0;
+}
+.userprofile.google{
+    background-image: url("/assets/images/google.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;    
+}
+.userprofile.facebook{
+    background-image: url("/assets/images/facebook.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;    
+}
+.userprofile.twitter{
+    background-image: url("/assets/images/twitter.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;    
+}
 
-    background-color: #303030;
+
+#userprofile-photo{
+    display: block;
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+#userprofile-photo > img{
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+    width:50px;
+    height: 50px;
+    border-radius: 50%;    
+}
+
+#userprofile-name{    
+    display: block;
+    width: calc(100% - 70px);
+    height: 70px;
+    line-height: 70px;
+    float: left;
+}
+#userprofile-name > label{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-weight: 800;
+}
+#userprofile-name > label:hover{
+    color:#FF4444;
+}
+#userprofile-provider{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    text-align: right;
+    float: left;
+}
+
+#userprofile-provider > a{
+    font-size: 0.9em;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-weight: 800;
+}
+#userprofile-provider > a:hover{
+    color:#FF4444;
 }
 
 .menu-list{
     margin: 0;
     padding: 0;
     padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 10px;
     display: block;
     width: 100%;
-    height:calc(100% - 190px);;
+    height:calc(100% - 160px);;
 }
 
 .menu-list > li{
+    margin-left: -20px;
+    padding-left: 20px;
     height: 40px;
     line-height: 40px;
     border-bottom: 1px solid #999999;
+}
+
+.menu-list > li > label{
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1.1em;
+    font-weight: 800;
+}
+.menu-list > li > label + input{
+    font-size: 1.2em;
 }
 
 .signout{

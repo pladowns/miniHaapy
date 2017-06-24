@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Firebase} from './../../class/firebase';
+import $ from 'jquery';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,28 @@ export class HomeComponent implements OnInit {
   constructor() {this.firebase = new Firebase();}
 
   ngOnInit() {
+    const userId = this.firebase.userAuthen;
+    const user = this.firebase.userAuthen.providerData[0];
+
+    switch(user.providerId){
+      case 'google.com' :
+        $(".userprofile").addClass("google");
+      $("#userprofile-provider > a").attr("href", "https://plus.google.com/" + user.uid);
+        break;
+      case 'facebook.com' :
+        $(".userprofile").addClass("facebook");
+      $("#userprofile-provider > a").attr("href", "https://www.facebook.com/" + user.uid);
+        break;
+      case 'twitter.com' :
+        $(".userprofile").addClass("twitter");
+      $("#userprofile-provider > a").attr("href", "https://www.twitter.com/" + user.uid);
+        break;
+    }
+
+    $("#userprofile-photo >  img").attr("src", user.photoURL);
+    $("#userprofile-name > label").html(user.displayName);
+    $("#userprofile-provider > a").html("@" + user.providerId);
+    console.log(user);
   }
 
   Signout(){
