@@ -12,6 +12,7 @@ import { HomeComponent } from './views/home/home.component';
 
 export class AppComponent implements OnInit {
   private firebase = new Firebase();
+  private home = new HomeComponent();
   constructor(private _router: Router) {
     const self = this;
     this._router.events.forEach((event) => {
@@ -44,17 +45,22 @@ export class AppComponent implements OnInit {
   private CheckAuthen(){
     let location = window.location.pathname;
     let user = this.firebase.userAuthen;
+    const self = this;
     if(!user){
       this._router.navigate(['/signin']);
     }else{
       //  Update token on load web application
       this.firebase.InitUser(function(){
-        const home = new HomeComponent();
-        home.Update();
+        self.home.Update();
       });
       if(location == '/signin') location = '/';
       this._router.navigate([location]); 
     }
+  }
+
+  // @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.home.WindowsResize(event.target.innerWidth);
   }
 
 }

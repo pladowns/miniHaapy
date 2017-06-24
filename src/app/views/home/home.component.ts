@@ -9,7 +9,9 @@ import $ from 'jquery';
 })
 export class HomeComponent implements OnInit {
   private firebase;
-  constructor() {this.firebase = new Firebase();}
+  constructor() {
+    this.firebase = new Firebase();
+  }
 
   ngOnInit() {
 
@@ -130,19 +132,16 @@ ReLoadUser(){
 
 HideMenu(){
   $(".side").removeClass("show").addClass("hide");
-  this.WindowResize();
 }
 
 ShowMenu(){
   $(".side").removeClass("hide").addClass("show");
-  this.WindowResize();
 }
 
-WindowResize(){
-  $(".container").resize(function(){
-    const win = $("window").width();
-    console.log("width = " + win);
-  });
+WindowsResize(width){
+  if(width > 950){
+    $(".side").removeClass("hide").removeClass("show");
+  }
 }
 
 }

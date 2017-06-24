@@ -202,7 +202,8 @@
        left: -250px;
         background: #FFFFFF;
         transition: all 0.3s ease-in-out;
-        
+        border:0;
+        box-shadow: 0.5px 1px 1px 1.5px #999999;
     }
     .side-hide{
         display: block;
