@@ -38,7 +38,9 @@ exports.sendTopicNotification = functions.database.ref("/ntb")
             //  Loop send messaging to device
             for(var accountKey in account){
                 var registrationToken = account[accountKey].messaging_token;
-                SendMessaging(payload, registrationToken, "/ntbtest/" + key + "/" + accountKey);
+                if(registrationToken){
+                    SendMessaging(payload, registrationToken, "/ntbtest/" + key + "/" + accountKey);
+                }
             }
             
         }
