@@ -22,4 +22,22 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+
+  Subscrible(){
+    this.firebase.SendRegistrationToServer(function(){
+      //console.log("Subscrible success.");
+    }, function(err){
+      //console.log("Subscrible failed.");
+    });
+  }
+
+  Unsubscrible(){
+    this.firebase.SendUnRegistrationToServer(function(){
+      //console.log("Unsubscrible success.");
+    },function(err){
+      //console.log("Unsubscrible failed.");
+    });
+  }
+    
 }

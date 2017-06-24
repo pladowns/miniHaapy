@@ -1,4 +1,23 @@
-<p>
-  home works!
-</p>
-<button (click)="Signout()" >Sign out</button>
+
+<div class="notification"></div>
+<div class="side">
+  <div class="userprofile">
+
+  </div>
+  <ul class="menu-list">
+    <li class="menu-subscrible">Subscrible</li>
+    <li class="menu-notification">Notification</li>
+    <li class="menu-friend">Friend</li>
+    <li class="menu-activity">Activity</li>
+  </ul>
+  <div class="signout">
+      <label (click)="Signout()">Sign out</label>
+  </div>
+</div>
+<div class="navigation">
+    <div class="toggle-menu fa fa-bars "></div>
+</div>
+<div class="content">
+      <button (click)="Subscrible()">Subscrible</button>
+      <button (click)="Unsubscrible()">Unsubscrible</button>
+</div>
