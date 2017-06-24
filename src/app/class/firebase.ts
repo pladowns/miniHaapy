@@ -95,7 +95,7 @@ export class Firebase {
   }
 
 
-  InitUser(){
+  InitUser(callback){
     const self = this;
     this.database.ref("/account").orderByKey().equalTo(this.userAuthen.uid).once("value", function(data) {
       const user = data.val();
@@ -106,9 +106,12 @@ export class Firebase {
         self.userAuthen.providerData["notification"] = "enable";
         self.database.ref("/account/" + uid).set(self.userAuthen.providerData)
           .then(function(){
+              callback();
               self.InitMessaging();
           });
       }else{
+          self.userAuthen.providerData = user[self.userAuthen.uid];
+          callback();
           self.InitMessaging();
       }
     });
@@ -137,43 +140,29 @@ export class Firebase {
   }
 
   // ============== Database
-  SendRegistrationToServer(successSebd, errorSend){
+  SendRegistrationToServer(type, successSebd, errorSend){
     const uid = this.userAuthen.uid;
-    const self = this;
-    this.RequestMessagingPermission(function(){
-      self.GetMessagingToken(function(token){
-        // set messaging token
-        let reference: string = "account/"+ uid + "/subscrible";
-        self.addTokenToDatabase(reference, "enable", function(){
-          console.log("Subscrile success.");
-          successSebd();
-        },function(err){
-          console.log("Subscrile failed.");
-          errorSend(err)
-        });
-        //  console.log("old token : " + self.messagingToken);
+      let reference: string = "account/"+ uid + "/" + type;
+      this.addTokenToDatabase(reference, "enable", function(){
+        console.log("Subscrile success.");
+        successSebd();
       },function(err){
-        errorSend(err);
+        console.log("Subscrile failed.");
+        errorSend(err)
       });
-    },function(err){
-      errorSend(err);
-    });
+ 
   }
 
-  SendUnRegistrationToServer(successSebd, errorSend){
-    if(this.messagingToken){
-      let reference: string = "account/" + this.userAuthen.uid + "/subscrible";
+  SendUnRegistrationToServer(type, successSebd, errorSend){
+    const uid = this.userAuthen.uid;
+      let reference: string = "account/"+ uid + "/" + type;
       this.addTokenToDatabase(reference, "disable", function(){
-        console.log("Unsubscrile success.");
+        console.log("UnSubscrile success.");
         successSebd();
-        },function(err){
-        console.log("Unsubscrile failed.");
-        errorSend(err);
+      },function(err){
+        console.log("UnSubscrile failed.");
+        errorSend(err)
       });
-    }else{
-      console.log("Unsubscrile failed.");
-      errorSend(false);
-    }
   }
 
   private addTokenToDatabase(document, data, successInsert, errorInsert){

@@ -12,9 +12,12 @@ export class HomeComponent implements OnInit {
   constructor() {this.firebase = new Firebase();}
 
   ngOnInit() {
-    const userId = this.firebase.userAuthen;
-    const user = this.firebase.userAuthen.providerData[0];
 
+  }
+
+  Update(){
+    const userId = this.firebase.userAuthen;
+    const user = this.firebase.userAuthen.providerData;
     switch(user.providerId){
       case 'google.com' :
         $(".userprofile").addClass("google");
@@ -33,6 +36,25 @@ export class HomeComponent implements OnInit {
     $("#userprofile-photo >  img").attr("src", user.photoURL);
     $("#userprofile-name > label").html(user.displayName);
     $("#userprofile-provider > a").html("@" + user.providerId);
+
+    const subscrible = user.subscrible;
+    if(subscrible){
+      if(subscrible == 'enable') {
+        $("#menu-subscrible-check > div").removeClass("fa-toggle-off").addClass("fa-toggle-on");
+      }else{
+        $("#menu-subscrible-check > div").removeClass("fa-toggle-on").addClass("fa-toggle-off");
+      } 
+    }
+
+    const notification = user.notification;
+    if(notification){
+      if(notification == 'enable') {
+        $("#menu-notification-check > div").removeClass("fa-toggle-off").addClass("fa-toggle-on");
+      }else{
+        $("#menu-notification-check > div").removeClass("fa-toggle-on").addClass("fa-toggle-off");
+      } 
+    }    
+
     console.log(user);
   }
 
@@ -48,19 +70,62 @@ export class HomeComponent implements OnInit {
 
 
   Subscrible(){
-    this.firebase.SendRegistrationToServer(function(){
-      //console.log("Subscrible success.");
-    }, function(err){
-      //console.log("Subscrible failed.");
-    });
+    const self = this;
+
+    const userId = this.firebase.userAuthen;
+    const user = this.firebase.userAuthen.providerData;
+
+    if(user.subscrible == 'enable') {
+      this.firebase.SendUnRegistrationToServer("subscrible", function(){
+        console.log("Unsubscrible success.");
+        self.ReLoadUser();
+      },function(err){
+        console.log("Unsubscrible failed.");
+        console.log(err);
+      });
+    }else{
+      this.firebase.SendRegistrationToServer("subscrible", function(){
+        console.log("Subscrible success.");
+        self.ReLoadUser();
+      }, function(err){
+        console.log("Unsubscrible failed.");
+        console.log(err);
+      });
+    } 
+
   }
 
-  Unsubscrible(){
-    this.firebase.SendUnRegistrationToServer(function(){
-      //console.log("Unsubscrible success.");
-    },function(err){
-      //console.log("Unsubscrible failed.");
-    });
+  Notification(){
+
+    const self = this;
+
+    const userId = this.firebase.userAuthen;
+    const user = this.firebase.userAuthen.providerData;
+
+    if(user.notification == 'enable') {
+      this.firebase.SendUnRegistrationToServer("notification", function(){
+        console.log("UnNotification success.");
+        self.ReLoadUser();
+      },function(err){
+        console.log("UnNotification failed.");
+        console.log(err);
+      });
+    }else{
+      this.firebase.SendRegistrationToServer("notification", function(){
+        console.log("Notification success.");
+        self.ReLoadUser();
+      }, function(err){
+        console.log("Notification failed.");
+        console.log(err);
+      });
+    } 
   }
     
+ReLoadUser(){
+  const self = this;
+  this.firebase.InitUser(function(){
+      self.Update();
+  })
+}
+
 }

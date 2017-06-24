@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Firebase} from './class/firebase';
 import {Router, NavigationStart, RouterState} from '@angular/router'
 
+import { HomeComponent } from './views/home/home.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -46,7 +48,10 @@ export class AppComponent implements OnInit {
       this._router.navigate(['/signin']);
     }else{
       //  Update token on load web application
-      this.firebase.InitUser();
+      this.firebase.InitUser(function(){
+        const home = new HomeComponent();
+        home.Update();
+      });
       if(location == '/signin') location = '/';
       this._router.navigate([location]); 
     }
