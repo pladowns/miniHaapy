@@ -7,16 +7,20 @@
     float:left;
 }
 
+.side-hide{
+    display: none;
+}
+
 .navigation{
-    height:35px;
+    height:45px;
     padding: 3px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #659bc1;
+    /*box-shadow: 0.5px 0 1px 0.5px #222222;*/
 }
 
 .content{
-    height: calc(100% - 35px);
+    height: calc(100% - 45px);
     border-top: 1px dotted #666666;
     border-bottom: 1px dotted #666666;
 }
@@ -35,15 +39,16 @@
     float: right;
 }
 
-.navigation, .content, notification{
-    transform: all 1.3s ease-in-out;
-}
-
-.toggle-menu{
-    padding: 5px;
-    border: 1px solid #999999;
+.navigation > .toggle-menu{
+    display: none;
+    padding: 10px;
     cursor: pointer;
-    background-color: #999999;
+    background-color: #f0f0f0;
+    color: #555555;
+}
+.navigation > .toggle-menu:hover{
+    background-color: #c0c0c0;
+    color: #555555;
 }
 
 /* User profile Menu List */
@@ -135,8 +140,8 @@
 .menu-list > li{
     margin-left: -20px;
     padding-left: 20px;
-    height: 50px;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
     border-bottom: 1px solid #999999;
 }
 
@@ -149,16 +154,18 @@
     cursor: pointer;
 }
 .menu-list > li > #menu-subscrible-check{
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .menu-list > li > #menu-subscrible-check > div{
+    font-size: 1.1em;
     margin-left: 30px;
 }
 .menu-list > li > #menu-notification-check{
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .menu-list > li > #menu-notification-check > div{
-    margin-left: 20px;
+    font-size: 1.1em;
+    margin-left: 22px;
 }
 
 .menu-list > li > #menu-subscrible-check > div.fa-toggle-on{
@@ -192,14 +199,38 @@
     .side{
         position: fixed;
         top: 0;
-        left: -100px;
-        background: #000000;
-        opacity: 0.3;
+       left: -250px;
+        background: #FFFFFF;
+        transition: all 0.3s ease-in-out;
+        
     }
+    .side-hide{
+        display: block;
+        position: absolute;
+        margin-left: 225px;;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        cursor: pointer;
+        color: #FFFFFF;
+        transition: all 0.3s ease-in-out;
+    }
+    .side-hide:hover{
+        color: #FF4444;
+        background: #FFFFFF;
+        opacity: 0.7;
+    }
+    .side.hide{
+       left: -250px;
+    }    
+    .side.show{
+       left: 0;
+    }       
 
-.navigation, .content, .footer{
-        background: #505000;
-}
+    .navigation > .toggle-menu{
+        display: inline-block;
+    }
 
     .navigation, .content{
     width:calc(100% - 250px);

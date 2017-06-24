@@ -128,4 +128,21 @@ ReLoadUser(){
   })
 }
 
+HideMenu(){
+  $(".side").removeClass("show").addClass("hide");
+  this.WindowResize();
+}
+
+ShowMenu(){
+  $(".side").removeClass("hide").addClass("show");
+  this.WindowResize();
+}
+
+WindowResize(){
+  $(".container").resize(function(){
+    const win = $("window").width();
+    console.log("width = " + win);
+  });
+}
+
 }
