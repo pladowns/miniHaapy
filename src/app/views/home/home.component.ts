@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
         break;
       case 'twitter.com' :
         $(".userprofile").addClass("twitter");
-      $("#userprofile-provider > a").attr("href", "https://www.twitter.com/" + user.uid);
+      $("#userprofile-provider > a").attr("href", "https://twitter.com/intent/user?user_id=" + user.uid);
         break;
     }
 
