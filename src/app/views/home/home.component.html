@@ -1,6 +1,6 @@
-
-<div class="notification"></div>
+<!--
 <div class="side">
+
   <div class="userprofile">
     <div id="userprofile-photo">
       <img src="/assets/launcher/96.png">
@@ -13,6 +13,7 @@
     </div>
     <div class="fa fa-close side-hide" (click)="HideMenu()"></div>
   </div>
+
   <ul class="menu-list">
     <li class="menu-question">Quistion</li>
     <li class="menu-friend">Friend</li>
@@ -26,13 +27,59 @@
         <div class="fa fa-toggle-off"></div>
       </label>
   </ul>
+
   <div class="signout">
       <label (click)="Signout()">Sign out</label>
   </div>
+  
+</div>
+
+<div class="navigation">
+    <div class="toggle-menu fa fa-bars " (click)="ShowMenu()"></div>
+</div>
+<div class="content"></div>
+<div class="notification"></div>
+-->
+
+
+
+<div class="side">
+
+  <div class="userprofile">
+    <div id="userprofile-photo">
+      <img src="/assets/launcher/96.png">
+    </div>
+    <div id="userprofile-name">
+      <label></label>
+    </div>
+    <div id="userprofile-provider">
+      <a target="_blank" ></a>
+    </div>
+    <div class="fa fa-close side-hide" (click)="HideMenu()"></div>
+  </div>
+
+
+  <ul class="menu-list">
+    <li class="menu-question">Quistion</li>
+    <li class="menu-friend">Friend</li>
+    <li class="menu-subscrible">
+      <label id="menu-subscrible-check" (click)="Subscrible()">Subscrible
+        <div class="fa fa-toggle-off"></div>
+      </label>
+    </li>
+    <li>
+      <label id="menu-notification-check" (click)="Notification()">Notification
+        <div class="fa fa-toggle-off"></div>
+      </label>
+  </ul>
+
+  <div class="signout">
+      <label (click)="Signout()">Sign out</label>
+  </div>
+      
 </div>
 <div class="navigation">
     <div class="toggle-menu fa fa-bars " (click)="ShowMenu()"></div>
 </div>
-<div class="content">
-
-</div>
+<div class="content"></div>
+<div class="notification"></div>

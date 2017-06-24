@@ -1,10 +1,10 @@
-
 .side{
+    position: relative;
     display: block;
-    width:250px;
-    height:100%;
-    border-right: 1px dotted #666666;
-    float:left;
+    width: 250px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #AAAAAA;
 }
 
 .side-hide{
@@ -12,31 +12,27 @@
 }
 
 .navigation{
-    height:45px;
-    padding: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
-    /*box-shadow: 0.5px 0 1px 0.5px #222222;*/
+    display: block;
+    width: calc(100% - 250px);
+    height: 45px;;
+    float: left;
 }
 
 .content{
-    height: calc(100% - 45px);
-    border-top: 1px dotted #666666;
-    border-bottom: 1px dotted #666666;
-}
-
-.navigation, .content{
     display: block;
-    width:calc(100% - 500px);
-    float:left;
+    width: calc(100% - 500px);
+    height: calc(100% - 45px);
+    float: left;
 }
 
 .notification{
     display: block;
-    width:250px;
-    height:100vh;
-    border-left: 1px dotted #666666;
-    float: right;
+    width: 250px;
+    height: calc(100% - 45px);
+    float: left;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;    
 }
 
 .navigation > .toggle-menu{
@@ -127,6 +123,7 @@
 }
 
 .menu-list{
+    list-style-type: none;
     margin: 0;
     padding: 0;
     padding-top: 20px;
@@ -140,9 +137,9 @@
 .menu-list > li{
     margin-left: -20px;
     padding-left: 20px;
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #999999;
+    height: 45px;
+    line-height: 45px;
+    border-bottom: 0.5px solid #f0f0f0;
 }
 
 .menu-list > li > label{
@@ -158,14 +155,14 @@
 }
 .menu-list > li > #menu-subscrible-check > div{
     font-size: 1.1em;
-    margin-left: 30px;
+    margin-left: 50px;
 }
 .menu-list > li > #menu-notification-check{
     font-size: 1em;
 }
 .menu-list > li > #menu-notification-check > div{
     font-size: 1.1em;
-    margin-left: 22px;
+    margin-left: 42px;
 }
 
 .menu-list > li > #menu-subscrible-check > div.fa-toggle-on{
@@ -193,6 +190,7 @@
 .signout > label:hover{
     color:#004080;
 }
+
 
 /* hidden notification screen ================== */
 @media screen and (max-width:950px) {
