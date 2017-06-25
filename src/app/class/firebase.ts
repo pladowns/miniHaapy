@@ -104,6 +104,7 @@ export class Firebase {
         self.userAuthen.providerData = self.userAuthen.providerData[0];
         self.userAuthen.providerData["subscrible"] = "disable";
         self.userAuthen.providerData["notification"] = "enable";
+        self.userAuthen.providerData["name"] = self.userAuthen.providerData["displayName"].toLowerCase();
         self.database.ref("/account/" + uid).set(self.userAuthen.providerData)
           .then(function(){
               callback();
@@ -248,6 +249,30 @@ export class Firebase {
 
   FetchQuestionList(callback){
   this.database.ref("/questionowner/" + this.userAuthen.uid).orderByKey().once("value", function(data) {
+        const questList = data.val();
+        callback(questList);
+    });
+  }
+
+  FindFriend(value, callback){
+  this.database.ref("/account").orderByChild("name").startAt(value).endAt(value+"\uf8ff").once("value", function(data) {
+        const questList = data.val();
+        callback(questList);
+    });
+  }
+
+    AddNewFriend(friendid, frienddata, callback){
+      this.database.ref("/friend/" + this.userAuthen.uid + "/" + friendid).set(frienddata)
+      .then(function(data){
+        callback(data);
+      })
+      .catch(function(err){
+        callback(err);
+      });
+    }
+
+  FetchFriendList(callback){
+  this.database.ref("/friend/" + this.userAuthen.uid).orderByKey().once("value", function(data) {
         const questList = data.val();
         callback(questList);
     });

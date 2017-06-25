@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
     console.log(user);
 
-    this.QuestionMenu();
+    this.FriendMenu();
   }
 
   Signout(){
@@ -169,6 +169,58 @@ export class HomeComponent implements OnInit {
     $(".questionview").addClass("none");
     $(".friendview").removeClass("none");
     $(".title").html("เพื่อน");
+
+    const self = this;
+    $(".friend-new > input").keypress(function(){
+      let input = $(".friend-new > input").val();
+      if(input){
+        self.firebase.FindFriend(input, function(data){
+          self.PreviewFriend(data);
+        });
+      }else{
+        $("#preview").remove();
+      }
+    });
+
+    this.FetchFriendList();
+  }
+
+  PreviewFriend(data){
+    const self = this;
+      $("#preview").remove();
+    if(data){
+      $(".previewp").append("<div _ngcontent-c2 id='preview'></div>");
+      $("#preview").append("<div _ngcontent-c2 class='fa fa-close preview-hide'></div>");
+      for(var key in data){
+        $("#preview").append("<div _ngcontent-c2 class='friend-item' id='item-" + key + "'></div>");
+        const name = "#item-" + key;
+        $(name).append("<div _ngcontent-c2><img _ngcontent-c2 src='"+ data[key].photoURL + "'></div>");
+        $(name).append("<label _ngcontent-c2>" + data[key].displayName + "</label>");
+        $(name).append("<label _ngcontent-c2>" + data[key].providerId + "</label>");
+
+        $(name).click(function(){
+          let uid = $(this).attr("id").split('-');;
+          uid = uid[1];
+          self.firebase.AddNewFriend(uid, data[uid], function(res){
+            $("#preview").remove();
+
+            $(".friend-list").prepend("<li _ngcontent-c2 class='friend-item-list' id='itemlist-" + uid + "'></li>");
+            const name = "#itemlist-" + uid;
+            $(name).append("<div _ngcontent-c2><img _ngcontent-c2 src='"+ data[uid].photoURL + "'></div>");
+            $(name).append("<label _ngcontent-c2>" + data[uid].displayName + "</label>");
+            $(name).append("<label _ngcontent-c2>" + data[uid].providerId + "</label>");  
+
+          });
+
+        });
+
+      }
+
+      $(".preview-hide").click(function(){
+        $("#preview").remove();
+      });
+
+    }
   }
 
   AddNewQuest(){
@@ -178,16 +230,33 @@ export class HomeComponent implements OnInit {
       this.firebase.AddNewQuestion(input, function(key){
         $(".quest-list").prepend("<li _ngcontent-c2><input _ngcontent-c2 type='checkbox' class='checkbox' id='" + key + "'><label _ngcontent-c2 for='" +  key + "''>" + input + "</label></li>");      
       },function(err){
-        
+
       });
     }
   }
 
   FetchQuestList(){
+      $(".quest-list").html("");
       this.firebase.FetchQuestionList(function(data){
         for(var key in data){
           $(".quest-list").append("<li _ngcontent-c2><input _ngcontent-c2 type='checkbox' class='checkbox' id='" + key + "'><label _ngcontent-c2 for='" +  key + "''>" + data[key] + "</label></li>");
         }
+      },function(err){
+        
+      });
+  }
+
+  FetchFriendList(){
+      $(".friend-list").html("");
+      this.firebase.FetchFriendList(function(data){
+        for(var key in data){
+          $(".friend-list").append("<li _ngcontent-c2 class='friend-item-list' id='itemlist-" + key + "'></li>");
+          const name = "#itemlist-" + key;
+          $(name).append("<div _ngcontent-c2><img _ngcontent-c2 src='"+ data[key].photoURL + "'></div>");
+          $(name).append("<label _ngcontent-c2>" + data[key].displayName + "</label>");
+          $(name).append("<label _ngcontent-c2>" + data[key].providerId + "</label>");          
+        }
+        
       },function(err){
         
       });

@@ -318,7 +318,7 @@
     background-color: #555555;
     color: #FFFFFF;
 }
-/*  -----  */
+
 .quest-list{
     margin: 0;
     display: block;
@@ -335,7 +335,152 @@
     line-height: 35px;
 }
 
+/* ------ */
+.friend-header{
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 30px;
+    padding-right: 20px;
+}
 
+.friend-new{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+.friend-new > input{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #777777;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 0.9em;
+}
+
+.friend-list{
+    margin: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% - 90px);
+    padding-left: 20px;
+    padding-right: 20px;
+    list-style-type: none;
+}
+.friend-list > li{
+    display: block;
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    margin-top: 10px;
+    box-shadow: 0 0 0.5px 0.5px #888888;
+}
+
+.previewp{
+    margin-left: 20px;
+}
+#preview{
+    position: absolute;
+    display: block;
+    width: 320px;
+    max-height: 300px;
+    border: 1px solid #cccccc;
+    background-color: #FFFFFF;
+    padding: 10px;
+    padding-top: 0;
+    box-shadow: 0.5px 1px 1px 1.5px #999999;
+}
+.preview-hide{
+        display: block;
+        margin-left: 270px;;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        cursor: pointer;
+        color: #000000;
+    }
+    .preview:hover{
+        color: #FF4444;
+        background: #FFFFFF;
+        opacity: 0.7;
+    }
+    .friend-item{
+        display: block;
+        width: 100%;
+        height: 50px;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .friend-item:hover{
+        cursor: pointer;
+        background-color: #eeeeee;
+    }    
+    .friend-item > div{
+        display: block;
+        width: 40px;
+        height: 40px;
+        float: left;
+    }
+    .friend-item > div > img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }    
+    .friend-item  > label{
+        display: block;
+        width: calc(100% - 40px);
+        height: 20px;
+        line-height: 20px;
+        color: #004080;
+        font-size: 0.9em;
+        float: left;
+        padding-left: 40px;
+        padding-right: 10px;
+    }      
+
+    
+    .friend-item-list{
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .friend-item-list:hover{
+        cursor: pointer;
+        background-color: #eeeeee;
+    }    
+    .friend-item-list > div{
+        display: block;
+        width: 40px;
+        height: 40px;
+        float: left;
+    }
+    .friend-item-list > div > img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }    
+    .friend-item-list  > label{
+        display: block;
+        width: calc(100% - 40px);
+        height: 20px;
+        line-height: 20px;
+        color: #004080;
+        font-size: 0.9em;
+        float: left;
+        padding-left: 40px;
+        padding-right: 10px;
+    }      
 
 
 
