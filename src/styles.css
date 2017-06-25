@@ -1,3 +1,5 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
 /* You can add global styles to this file, and also import other style files */
 /*
     -- Reset CSS
@@ -56,3 +58,52 @@ a:active {
                                   supported by Chrome and Opera */
 }
 
+/* Radio and Checkbox */
+    input[type="radio"].radio,
+    input[type="checkbox"].checkbox {
+        display: none;
+    }
+
+        input[type="radio"].radio + label,
+        input[type="checkbox"].checkbox + label {
+            line-height: 35px;
+            display: inline-block;
+            padding-left: 30px;
+            padding-right: 10px;
+        }
+
+            input[type="radio"].radio + label:hover,
+            input[type="checkbox"].checkbox + label:hover {
+                color: #60a7d5;
+            }
+
+            input[type="radio"].radio + label:before,
+            input[type="checkbox"].checkbox + label:before {
+                margin-left: -20px;
+                padding-right: 50px;
+            }
+
+            input[type="radio"].radio + label:before {
+                font-family: FontAwesome;
+                content: "\f10c";
+                font-size: 16px;
+            }
+
+        input[type="radio"].radio:checked + label:before {
+            font-family: FontAwesome;
+            content: "\f192";
+            font-size: 16px;
+        }
+
+        input[type="checkbox"].checkbox + label:before {
+            font-family: FontAwesome;
+            content: "\f096";
+            font-size: 16px;
+        }
+
+        input[type="checkbox"].checkbox:checked + label:before {
+            font-family: FontAwesome;
+            content: "\f046";
+            font-size: 16px;
+        }
+/* end Radio and Checkbox */        

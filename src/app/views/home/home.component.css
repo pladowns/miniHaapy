@@ -17,6 +17,15 @@
     height: 45px;;
     float: left;
 }
+.title{
+    display: block;
+    width: calc(100% - 40px);
+    height: 45px;
+    line-height: 45px;
+    font-weight: 800;
+    text-align: center;
+    float: left;
+}
 
 .content{
     display: block;
@@ -37,10 +46,13 @@
 
 .navigation > .toggle-menu{
     display: none;
-    padding: 10px;
+    width: 40px;
+    height: 45px;
+    padding: 13px;
     cursor: pointer;
     background-color: #f0f0f0;
     color: #555555;
+    float: left;
 }
 .navigation > .toggle-menu:hover{
     background-color: #c0c0c0;
@@ -141,6 +153,10 @@
     line-height: 45px;
     border-bottom: 0.5px solid #f0f0f0;
 }
+.menu-list > li.menu:hover{
+    cursor: pointer;
+    background-color: #e0e0e0;
+}
 
 .menu-list > li > label{
     padding: 5px;
@@ -150,15 +166,17 @@
     font-weight: 800;
     cursor: pointer;
 }
+
+
 .menu-list > li > #menu-subscrible-check{
-    font-size: 1em;
+    font-size:0.9em;
 }
 .menu-list > li > #menu-subscrible-check > div{
     font-size: 1.1em;
-    margin-left: 50px;
+    margin-left: 10px;
 }
 .menu-list > li > #menu-notification-check{
-    font-size: 1em;
+    font-size: 0.9em;
 }
 .menu-list > li > #menu-notification-check > div{
     font-size: 1.1em;
@@ -190,6 +208,167 @@
 .signout > label:hover{
     color:#004080;
 }
+
+/* ================================================== */
+
+.mainview{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.mainview.none{
+    display:none;
+}
+
+.questionview{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.questionview.none{
+    display:none;
+}
+
+.friendview{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.friendview.none{
+    display:none;
+}
+
+/*  -----  */
+.quest-topic{
+    display: block;
+    width: 100%;
+    height: 55px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.quest-topic > input{
+    width: calc(100% - 40px);
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #777777;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.03em;
+}
+.quest-topic > div{
+    display: block;
+    width: 40px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #777777;
+    color: #DDDDDD;
+    font-size: 0.9em;
+    text-align: center;
+    float: left;
+}
+.quest-topic > div:hover{
+    cursor: pointer;
+    background-color: #555555;
+    color: #FFFFFF;
+}
+/*  -----  */
+.quest-header{
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+.quest-new{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+.quest-new > input{
+    width: calc(100% - 40px);
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #777777;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 0.9em;
+}
+.quest-new > div{
+    display: block;
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #777777;
+    color: #DDDDDD;
+    font-size: 0.8em;
+    text-align: center;
+    float: left;
+    list-style-type: none;
+}
+.quest-new > div:hover{
+    cursor: pointer;
+    background-color: #555555;
+    color: #FFFFFF;
+}
+/*  -----  */
+.quest-list{
+    margin: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% - 140px);
+    padding-left: 20px;
+    padding-right: 20px;
+    list-style-type: none;
+}
+.quest-list > li{
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================ */
 
 
 /* hidden notification screen ================== */
@@ -227,8 +406,12 @@
        left: 0;
     }       
 
+    .title{
+        width: calc(100% - 40px);
+    }
+
     .navigation > .toggle-menu{
-        display: inline-block;
+        display: block;
     }
 
     .navigation, .content{

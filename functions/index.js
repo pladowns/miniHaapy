@@ -12,7 +12,8 @@ admin.initializeApp(functions.config().firebase);
 // });
 
 // Realtime database triger child="ntb" : ("notification_topic_box")
-//  Fetch messaging token from account by(subscrible = enable)
+//  Fetch messaging token from account by(subscrible = enable) 
+//  Account nust have "messaging_token"
 //  Loop send notification 
 exports.sendTopicNotification = functions.database.ref("/ntb")
   .onWrite(event => {

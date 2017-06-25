@@ -233,4 +233,24 @@ export class Firebase {
     });
   }
 
+
+
+  //  Data Form
+  AddNewQuestion(value, callback){
+    this.database.ref("/questionowner/" + this.userAuthen.uid).push(value)
+    .then(function(data){
+      callback(data);
+    })
+    .catch(function(err){
+      callback(err);
+    });
+  }
+
+  FetchQuestionList(callback){
+  this.database.ref("/questionowner/" + this.userAuthen.uid).orderByKey().once("value", function(data) {
+        const questList = data.val();
+        callback(questList);
+    });
+  }
+
 }

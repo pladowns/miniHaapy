@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Firebase} from './class/firebase';
-import {Router, NavigationStart, RouterState} from '@angular/router'
+import {Router, NavigationStart} from '@angular/router'
 
 import { HomeComponent } from './views/home/home.component';
 
@@ -12,9 +12,10 @@ import { HomeComponent } from './views/home/home.component';
 
 export class AppComponent implements OnInit {
   private firebase = new Firebase();
-  private home = new HomeComponent();
+  private home;
   constructor(private _router: Router) {
     const self = this;
+    this.home = new HomeComponent(this._router);
     this._router.events.forEach((event) => {
       if(event instanceof NavigationStart) {
         let state = (event instanceof NavigationStart);

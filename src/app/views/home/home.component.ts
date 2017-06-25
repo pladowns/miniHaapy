@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {Firebase} from './../../class/firebase';
 import $ from 'jquery';
+
+
 
 @Component({
   selector: 'app-home',
@@ -9,7 +12,7 @@ import $ from 'jquery';
 })
 export class HomeComponent implements OnInit {
   private firebase;
-  constructor() {
+  constructor(private router: Router) {
     this.firebase = new Firebase();
   }
 
@@ -58,6 +61,8 @@ export class HomeComponent implements OnInit {
     }    
 
     console.log(user);
+
+    this.QuestionMenu();
   }
 
   Signout(){
@@ -123,25 +128,69 @@ export class HomeComponent implements OnInit {
     } 
   }
     
-ReLoadUser(){
-  const self = this;
-  this.firebase.InitUser(function(){
-      self.Update();
-  })
-}
-
-HideMenu(){
-  $(".side").removeClass("show").addClass("hide");
-}
-
-ShowMenu(){
-  $(".side").removeClass("hide").addClass("show");
-}
-
-WindowsResize(width){
-  if(width > 950){
-    $(".side").removeClass("hide").removeClass("show");
+  ReLoadUser(){
+    const self = this;
+    this.firebase.InitUser(function(){
+        self.Update();
+    })
   }
-}
+
+  HideMenu(){
+    $(".side").removeClass("show").addClass("hide");
+  }
+
+  ShowMenu(){
+    $(".side").removeClass("hide").addClass("show");
+  }
+
+  WindowsResize(width){
+    if(width > 950){
+      $(".side").removeClass("hide").removeClass("show");
+    }
+  }
+
+  MainMenu() {
+    $(".mainview").removeClass("none");
+    $(".questionview").addClass("none");
+    $(".friendview").addClass("none");
+    $(".title").html("หน้าหลัก");
+  }
+
+  QuestionMenu() {
+    $(".mainview").addClass("none");
+    $(".questionview").removeClass("none");
+    $(".friendview").addClass("none");
+    $(".title").html("ถามเพือ่น");
+    this.FetchQuestList();
+  }
+
+  FriendMenu() {
+    $(".mainview").addClass("none");
+    $(".questionview").addClass("none");
+    $(".friendview").removeClass("none");
+    $(".title").html("เพื่อน");
+  }
+
+  AddNewQuest(){
+    const input = $(".quest-new > input").val();
+    if(input){
+      // add new question
+      this.firebase.AddNewQuestion(input, function(key){
+        $(".quest-list").prepend("<li _ngcontent-c2><input _ngcontent-c2 type='checkbox' class='checkbox' id='" + key + "'><label _ngcontent-c2 for='" +  key + "''>" + input + "</label></li>");      
+      },function(err){
+        
+      });
+    }
+  }
+
+  FetchQuestList(){
+      this.firebase.FetchQuestionList(function(data){
+        for(var key in data){
+          $(".quest-list").append("<li _ngcontent-c2><input _ngcontent-c2 type='checkbox' class='checkbox' id='" + key + "'><label _ngcontent-c2 for='" +  key + "''>" + data[key] + "</label></li>");
+        }
+      },function(err){
+        
+      });
+  }
 
 }
